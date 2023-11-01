@@ -1,21 +1,22 @@
-# CubeChart
-CubeChart example repository
+# vx_chart
+
+vx_chart example repository
 
 ### Included Files
 
 | File             | Description                             |
 | ---------------- |-----------------------------------------|
-| cubedemo.html    | Framework example file                  |
+| example.html    | Framework example file                  |
 | vx_enum.js       | Event record enumerated definitions     |
 
 ### Live Demo
 
-* [Full orderbook chart](https://code.vertex-analytics.com/cubechart-1.0.0/cubedemo.html)
-* [Trades only chart](https://code.vertex-analytics.com/cubechart-1.0.0/cubedemo.html?type=trades)
+* [Full orderbook chart](https://code.vertex-analytics.com/vx-chart-1.0.0/example.html)
+* [Trades only chart](https://code.vertex-analytics.com/vx-chart-1.0.0/example.html?type=trades)
 
 ### Installation
 
-The CubeChart framework is hosted at https://code.vertex-analytics.com.
+The vx_chart framework is hosted at https://code.vertex-analytics.com.
 
 Implementation files are hosted on the client's site.
 
@@ -38,12 +39,12 @@ Implementation files are hosted on the client's site.
    
 ```html
 <!-- include vx.chart api files in order -->
-<script src="https://code.vertex-analytics.com/cubechart-1.0.0/vx-enum.js"></script>
-<script src="https://code.vertex-analytics.com/cubechart-1.0.0/vx-util.js"></script>
-<script src="https://code.vertex-analytics.com/cubechart-1.0.0/vx-main.js"></script>
-<script src="https://code.vertex-analytics.com/cubechart-1.0.0/vx-draw.js"></script>
-<script src="https://code.vertex-analytics.com/cubechart-1.0.0/vx-cube.js"></script>
-<script src="https://code.vertex-analytics.com/cubechart-1.0.0/vx-core.js"></script>	
+<script src="https://code.vertex-analytics.com/vx-chart-1.0.0/vx-enum.js"></script>
+<script src="https://code.vertex-analytics.com/vx-chart-1.0.0/vx-util.js"></script>
+<script src="https://code.vertex-analytics.com/vx-chart-1.0.0/vx-main.js"></script>
+<script src="https://code.vertex-analytics.com/vx-chart-1.0.0/vx-draw.js"></script>
+<script src="https://code.vertex-analytics.com/vx-chart-1.0.0/vx-cube.js"></script>
+<script src="https://code.vertex-analytics.com/vx-chart-1.0.0/vx-core.js"></script>	
 ```
    
 #### 5. Implement an initialization function. ####
