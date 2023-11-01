@@ -1,1 +1,1 @@
-# vX-chart
+# vx-chart
