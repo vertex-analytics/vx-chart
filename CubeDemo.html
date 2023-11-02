@@ -100,16 +100,16 @@
 		   //pInfo = initialization object.
 		   onOpen (pInfo)
 		   {
-			  //console.log ("onOpen Called");
-			  //console.log (pInfo);
+				console.log ("onOpen Called");
+				console.log (pInfo);
 		   }
 
 		   //Called by the framework to read each record of data.
 		   //pItem = event item number, 0 to rows-1.
 		   onRead (pItem)
 		   {
-			  let	tEvnt	=	{};   // Add FID record
-			  this.CubeEvnt(tEvnt);
+				let	tEvnt	=	gDemo.DemoRead(pItem);
+				this.CubeEvnt(tEvnt);
 		   }
 
 		   //Called by the framework after all records have been read.
@@ -160,6 +160,10 @@
 		// called after the demo data is loaded
 		function	onLoaded (pRows)
 		{
+			 console.log ("onLoaded Called");
+			 console.log ("DemoRows: " + gDemo.DemoRows());
+		 
+
 			const urlParams = new URL(window.location.toLocaleString()).searchParams;			
 			let	chart	=	urlParams.get('chart');
 
