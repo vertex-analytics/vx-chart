@@ -11,8 +11,8 @@ vx_chart example repository
 
 ### Live Demo
 
-* [Full orderbook chart](https://code.vertex-analytics.com/vx-chart-1.0.0/example.html)
-* [Trades only chart](https://code.vertex-analytics.com/vx-chart-1.0.0/example.html?type=trades)
+* [Full orderbook chart](https://code.vertex-analytics.com/vx-chart-1.0.0/CubeDemo.html)
+* [Trades only chart](https://code.vertex-analytics.com/vx-chart-1.0.0/CubeDemo.html?type=trades)
 
 ### Installation
 
