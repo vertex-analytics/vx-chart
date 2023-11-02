@@ -6,13 +6,13 @@ vx_chart example repository
 
 | File             | Description                             |
 | ---------------- |-----------------------------------------|
-| example.html    | Framework example file                  |
+| CubeDemo.html    | Framework example file                  |
 | vx_enum.js       | Event record enumerated definitions     |
 
 ### Live Demo
 
 * [Full orderbook chart](https://code.vertex-analytics.com/vx-chart-1.0.0/CubeDemo.html)
-* [Trades only chart](https://code.vertex-analytics.com/vx-chart-1.0.0/CubeDemo.html?type=trades)
+* [Trades only chart](https://code.vertex-analytics.com/vx-chart-1.0.0/CubeDemo.html?chart=trades)
 
 ### Installation
 
