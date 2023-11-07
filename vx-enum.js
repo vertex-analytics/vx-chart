@@ -29,8 +29,8 @@ var vX = {
 	Fids		:
 	[
 
-		"header.instrumentID",
-		"header.sequence",
+		"header.instrumentID", //Unique ID given by the exchange used to Identify the contract 
+		"header.sequence", //Unique ID given by the exchange to each Market event a contract has. These sequentially get larger. 
 		"header.time",
 		"header.channelSequence",
 		"header.instrumentSequence",
