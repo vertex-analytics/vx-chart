@@ -30,10 +30,10 @@ var vX = {
 	[
 
 		"header.instrumentID", //Unique ID given by the exchange used to Identify the contract 
-		"header.sequence", //Unique ID given by the exchange to each Market event a contract has. These sequentially get larger. 
-		"header.time",
-		"header.channelSequence",
-		"header.instrumentSequence",
+		"header.sequence", 
+		"header.time", //Time in with nanosecond precision
+		"header.channelSequence", //Packet level sequence number per channel multiple instrumentSequence #'s for multiple contracts can have the same ChannelSequence #
+		"header.instrumentSequence", //Unique ID given by the exchange to each Market event a contract has. These sequentially get larger. 
 		"header.unionID",
 		"header.eventIndicator",
 		"header.flag",
@@ -43,68 +43,72 @@ var vX = {
 
 		"channelReset.type",
 
-		"tradeSummary.price",
-		"tradeSummary.quantity",
-		"tradeSummary.matches",
-		"tradeSummary.aggressor",
-		"tradeSummary.isImplied",
+		"tradeSummary.price",  //Price at which the event occurred
+		"tradeSummary.quantity", //Quantity matched for this event
+		"tradeSummary.matches", // Identifies the total number of non-implied orders that participated in this trade event
+		"tradeSummary.aggressor", // The side of the aggressor: 1=Buy, 2=Sell and 0=Implied
+		"tradeSummary.isImplied", 
 		"tradeSummary.isSnapshot",
 		"tradeSummary.volume",
 
 		"tradeMatch.isAggressor",
-		"tradeMatch.number",
+		"tradeMatch.number", //The order of this match if example if value of 2 this is the second order matched
 		"tradeMatch.price",
-		"tradeMatch.orderID",
+		"tradeMatch.orderID", // The Order ID only available when trader ops in
 		"tradeMatch.auxillaryID",
-		"tradeMatch.quantity",
+		"tradeMatch.quantity", // The amount filled in this match
 		"tradeMatch.flags",
 
-		"volumeUpdate.volume",	
-		"volumeUpdate.vwap",
+		"volumeUpdate.volume", // Represents cumulative traded volume of the Daily Trade session	
+		"volumeUpdate.vwap",  // No value for CME data
 
-		"bookLevel.price",
-		"bookLevel.quantity",
-		"bookLevel.orders",
+		// bookLevel represent quote messages for messages within the first 10 levels of the book and give details about the type of book event that occured and the make up of the book at that price level
+		"bookLevel.price", //Price at which the quote event occurred
+		"bookLevel.quantity", //Total quantity at this book level after this event
+		"bookLevel.orders", // Number of orders at this book level after this event
 		"bookLevel.impliedQuantity",
 		"bookLevel.impliedOrders",
-		"bookLevel.level",
-		"bookLevel.action",
-		"bookLevel.type",
-		"bookLevel.isEndEvent",
+		"bookLevel.level", // The number of price levels away from the market at which the event occurred
+		"bookLevel.action", // What occurred in the book.  It can be New, Delete or Change 
+		"bookLevel.type", // Is it a Bid or an Offer.
+		"bookLevel.isEndEvent", //EOE (end-of-Event) appears when more than one book update comes on the same message and is used to announce the end of book updates for the message.
 
-		"orderBook.orderID",
-		"orderBook.auxilaryID",
-		"orderBook.priorityID",
-		"orderBook.price",
-		"orderBook.previousID",
-		"orderBook.quantity",
-		"orderBook.action",
-		"orderBook.type",
+		// orderBook represent quote messages at all price levels and give only details about that specific quote message
+		"orderBook.orderID", // Identification number of the order can be used to trace the life cycle of the order
+		"orderBook.auxilaryID", // Not in use for CME data
+		"orderBook.priorityID", // Order priority for execution on the order book. A lower value is a higher priority
+		"orderBook.price", Price where the event occurred
+		"orderBook.previousID", // Not in use for CME data
+		"orderBook.quantity", // Visible quantity of an order to the market
+		"orderBook.action", // What occurred in the book. It can be overlay, new, delete, or change
+		"orderBook.type", // Side of the book. 0 = Bid And 1 = Offer
 		"orderBook.isSnapshot",
 
-		"securityStatus.group",
-		"securityStatus.asset",
-		"securityStatus.sessionDate",
-		"securityStatus.type",	
-		"securityStatus.haltReason",
-		"securityStatus.event",	
+		"securityStatus.group", // Root symbol of the asset. EX: If pulling an option this will have the root of the option
+		"securityStatus.asset", // Unique instrument ID
+		"securityStatus.sessionDate", // Indicates the date of the trade session
+		"securityStatus.type",	// 2 = Trading Halt, 4 = Close, 15 = New Price Indication, 17 = Ready to trade (Start of Session), 18 = Not available for trading, 20 = Unknown or Invalid, 21 = Pre-Open, 24 = Pre-Cross, 25 = Cross, 26 = Post Cross,103 = No Change
+		"securityStatus.haltReason", // 0 = Group schedule, 1 = Surveillance intervention, 2 = Market event, 3 = Instrument activation, 4 = Instrument expiration, 5 = Unknown, 6 = Recovery in Process
+		"securityStatus.event",	// 0 = No Event (default), 1 = No Cancel, 4 = Change of trading session (reset statistics), 5 = Implied matching ON, 6 = Implied matching OFF
 
-		"dailyStatistics.instrumentID",
-		"dailyStatistics.price",
-		"dailyStatistics.size",
-		"dailyStatistics.sessionDate",
-		"dailyStatistics.settleType",
-		"dailyStatistics.type",	
+	
+	
+		"dailyStatistics.instrumentID", //Unique ID given by the exchange used to Identify the contract 
+		"dailyStatistics.price", // for Settlement messages - Price of the product Settlement
+		"dailyStatistics.size", // for Open Interest messages - The total Open Interest, For Cleared Volumne - New The total volume
+		"dailyStatistics.sessionDate", // Date of trade session corresponding to the statistic entry
+		"dailyStatistics.settleType", // for settlement messages - Which type of settle price.
+		"dailyStatistics.type",	// type of Statistice can be: Settlement, Open Interest, Fixed Price or Cleared Volume
 
-		"sessionStatistics.instrumentID", 
-		"sessionStatistics.price",
-		"sessionStatistics.stateType",
+		"sessionStatistics.instrumentID", //Unique ID given by the exchange used to Identify the contract 
+		"sessionStatistics.price", // Price at which the statistic is referencing
+		"sessionStatistics.stateType", // Identifies Session Statisitc type: Opening Price, New High Bid or Low Ask, Session High or Low 
 		"sessionStatistics.action",
-		"sessionStatistics.type",
+		"sessionStatistics.type", //Is this the opening price.  0=Daily Open Price, 5=Indicative Opening 
 		"sessionStatistics.size",
 
-		"limitsBanding.highLimit",
-		"limitsBanding.lowLimit",
+		"limitsBanding.highLimit", // the Limit High price for the current session 
+		"limitsBanding.lowLimit", // the Limit Low price for the current session 
 		"limitsBanding.maxVariation",
 
 		"clearingPrice.price",
@@ -117,16 +121,16 @@ var vX = {
 	{
 		NotSet						: 255,
 		NotMapped					: 250,
-		TradeSummary				: 0,
-		TradeMatch					: 1,
-		VolumeUpdate				: 2,
-		BookLevel					: 3,
-		OrderBook					: 4,
-		SecurityStatus				: 5,
-		DailyStatistics				: 6,
-		SessionStatistics			: 7,
-		LimitsBanding				: 8,
-		ChannelReset				: 9,
+		TradeSummary				: 0,  // Messages that contain details of a trade at a particular price
+		TradeMatch					: 1, // Messages that contain details of the matching details pertaining to a trade that occured. these follow a trade message
+		VolumeUpdate				: 2, // Messages that contain an update on the current total volume traded for the session. This the last message following a trade
+		BookLevel					: 3, // Messages that contain details of what the book (quote) message did and the current make up of the price level the event occured at. Only for quote events within the 1st 10 price levels 
+		OrderBook					: 4,  // Messages that contain details of the book (quote) message itself and what it did. All quote events get and Orderbook message
+		SecurityStatus				: 5, // Messages that contain details of the an changes to the trading enviroment for that particual contract
+		DailyStatistics				: 6, // Messages that contain details certain statisics about the contract as it trades through the session
+		SessionStatistics			: 7, // Messages that contain details certain statisics about the overall session such as open prices and new highs and lows
+		LimitsBanding				: 8, // Messages that contain details about the sessions limit prices for the session
+		ChannelReset				: 9, // Messages that contain details about when a channel is reset
 		TransactionMarker			: 10,
 		Test						: 11,
 		ClearingPrice				: 12,
@@ -310,11 +314,11 @@ var vX = {
 	//-----------------------------------------------------------------------------------------------------------=
 	Trigger	:	
 	{
-		IcebergOrders			: 1,
-		TradeSweeps				: 2,
-		StopOrders				: 4,
-		Trades					: 8,
-		Books					: 16,
+		IcebergOrders				: 1, // identifies orders that fill more quantity then they showed
+		TradeSweeps				: 2, // Identifies market trades that trade more than one price level
+		StopOrders				: 4, // identifies trades that triggered from a stop order
+		Trades					: 8, // identifies all trades
+		Books					: 16, // keeps track of the book so quanity and number of orders can be pulled at all price levels not just 1 through 10
 
 		name (pType)	
 		{
