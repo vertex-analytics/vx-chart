@@ -77,7 +77,7 @@ var vX = {
 		"orderBook.orderID", // Identification number of the order can be used to trace the life cycle of the order
 		"orderBook.auxilaryID", // Not in use for CME data
 		"orderBook.priorityID", // Order priority for execution on the order book. A lower value is a higher priority
-		"orderBook.price", Price where the event occurred
+		"orderBook.price", //Price where the event occurred
 		"orderBook.previousID", // Not in use for CME data
 		"orderBook.quantity", // Visible quantity of an order to the market
 		"orderBook.action", // What occurred in the book. It can be overlay, new, delete, or change
