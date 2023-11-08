@@ -53,7 +53,7 @@ var vX = {
 
 		"tradeMatch.isAggressor",
 		"tradeMatch.number", //The order of this match if example if value of 2 this is the second order matched
-		"tradeMatch.price",
+		"tradeMatch.price", // The price the match occurred at
 		"tradeMatch.orderID", // The Order ID only available when trader ops in
 		"tradeMatch.auxillaryID",
 		"tradeMatch.quantity", // The amount filled in this match
