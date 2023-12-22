@@ -13,7 +13,7 @@ vx_chart example repository
 
 * [Full orderbook chart](https://code.vertex-analytics.com/vx-chart-1.0.0/CubeDemo.html)
 * [Trades only chart](https://code.vertex-analytics.com/vx-chart-1.0.0/CubeDemo.html?chart=trades)
-
+* [Dual iFrame chart](https://code.vertex-analytics.com/vx-chart-1.0.0/CubeDual.html)
 ### Installation
 
 The vx_chart framework is hosted at https://code.vertex-analytics.com.
